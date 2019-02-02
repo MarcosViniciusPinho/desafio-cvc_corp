@@ -5,19 +5,18 @@ package com.cvc.corp.desafio.resource.util;
  */
 public final class CallUtil {
 
-    public static String executeHotelsAvail(String enviroment, Long cityCode) {
-        return build(enviroment, cityCode, "hotels/avail/");
+    public static String executeHotelsAvail(String enviroment) {
+        return build(enviroment, "hotels/avail/{cityCode}");
     }
 
-    public static String executeHotels(String enviroment, Long id) {
-        return build(enviroment, id, "hotels/");
+    public static String executeHotels(String enviroment) {
+        return build(enviroment, "hotels/{id}");
     }
 
-    private static String build(String enviroment, Long code, String uri) {
+    private static String build(String enviroment, String uri) {
         StringBuilder url = new StringBuilder();
         url.append(enviroment);
         url.append(uri);
-        url.append(code);
         return url.toString();
     }
 

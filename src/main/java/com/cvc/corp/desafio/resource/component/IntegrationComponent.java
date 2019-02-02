@@ -19,15 +19,11 @@ public class IntegrationComponent {
     }
 
     public Hotel[] callHotelsByCodeCity(Long cityCode) {
-        return this.restTemplate.getForObject(CallUtil.executeHotelsAvail(
-                enviroment, cityCode
-        ), Hotel[].class);
+        return this.restTemplate.getForObject(CallUtil.executeHotelsAvail(enviroment), Hotel[].class, cityCode);
     }
 
     public Hotel[] callHotelsByCode(Long id) {
-        return this.restTemplate.getForObject(CallUtil.executeHotels(
-                enviroment, id
-        ), Hotel[].class);
+        return this.restTemplate.getForObject(CallUtil.executeHotels(enviroment), Hotel[].class, id);
     }
 
 }
