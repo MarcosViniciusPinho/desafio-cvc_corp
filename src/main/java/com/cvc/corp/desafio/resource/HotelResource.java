@@ -2,6 +2,7 @@ package com.cvc.corp.desafio.resource;
 
 import com.cvc.corp.desafio.entity.Hotel;
 import com.cvc.corp.desafio.resource.component.IntegrationComponent;
+import com.cvc.corp.desafio.resource.util.LocalDateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,14 @@ public class HotelResource {
     @Autowired
     private IntegrationComponent integration;
 
-    @GetMapping(value = "/city/{cityCode}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Hotel[]> getHotelsByCodeCity(@PathVariable(value = "cityCode") Long cityCode) {
+    @GetMapping(value = "/city/{cityCode}/checkin/{dateCheckin}/checkout/{dateCheckout}/adultos/{totalDeAdultos}/criancas/{totalDeCriancas}",
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Hotel[]> getHotelsByCodeCity(@PathVariable(value = "cityCode") Long cityCode,
+                                                       @PathVariable(value = "dateCheckin") String dateCheckin,
+                                                       @PathVariable(value = "dateCheckout") String dateCheckout,
+                                                       @PathVariable(value = "totalDeAdultos") Long totalDeAdultos,
+                                                       @PathVariable(value = "totalDeCriancas") Long totalDeCriancas) {
+        Long totalDeDias = LocalDateUtil.getTotalDoPeridoDeDias(dateCheckin, dateCheckout);
         Hotel[] hotels = this.integration.callHotelsByCodeCity(cityCode);
         return ResponseEntity.ok(hotels);
     }
