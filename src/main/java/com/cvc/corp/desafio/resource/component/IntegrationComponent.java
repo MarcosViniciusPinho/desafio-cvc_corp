@@ -1,5 +1,6 @@
 package com.cvc.corp.desafio.resource.component;
 
+import com.cvc.corp.desafio.entity.Hotel;
 import com.cvc.corp.desafio.resource.util.CallUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -11,21 +12,22 @@ import org.springframework.web.client.RestTemplate;
 public class IntegrationComponent {
 
     private RestTemplate restTemplate;
+    private static String enviroment = "https://cvcbackendhotel.herokuapp.com/";//TODO melhorar isto e deixar isso a cargo do arquivo de configuração
 
     public IntegrationComponent() {
         this.restTemplate = new RestTemplate();
     }
 
-    public String callHotelsByCodeCity(Integer cityCode) {
+    public Hotel[] callHotelsByCodeCity(Long cityCode) {
         return this.restTemplate.getForObject(CallUtil.executeHotelsAvail(
-                "https://cvcbackendhotel.herokuapp.com/", cityCode
-                ), String.class);
+                enviroment, cityCode
+        ), Hotel[].class);
     }
 
-    public String callHotelsByCode(Integer id) {
+    public Hotel[] callHotelsByCode(Long id) {
         return this.restTemplate.getForObject(CallUtil.executeHotels(
-                "https://cvcbackendhotel.herokuapp.com/", id
-        ), String.class);
+                enviroment, id
+        ), Hotel[].class);
     }
 
 }
