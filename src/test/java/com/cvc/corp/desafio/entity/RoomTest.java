@@ -19,4 +19,11 @@ public class RoomTest {
         Assert.assertEquals(BigDecimal.valueOf(1785L), total);
     }
 
+    @Test
+    public void naoDeveCalcularAComissao() {
+        Room room = new Room();
+        BigDecimal total = room.calcularComissao(5L, 2L, 1L);
+        Assert.assertNull(total);
+    }
+
 }
