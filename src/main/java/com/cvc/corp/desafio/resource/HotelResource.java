@@ -36,10 +36,16 @@ public class HotelResource {
         return ResponseEntity.ok(hotel);
     }
 
-    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Hotel[]> getHotelsByCode(@PathVariable(value = "id") Long id) {
+    @GetMapping(value = "/{id}/checkin/{dateCheckin}/checkout/{dateCheckout}/adultos/{totalDeAdultos}/criancas/{totalDeCriancas}",
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Hotel> getHotelsByCode(@PathVariable(value = "id") Long id,
+                                                   @PathVariable(value = "dateCheckin") String dateCheckin,
+                                                   @PathVariable(value = "dateCheckout") String dateCheckout,
+                                                   @PathVariable(value = "totalDeAdultos") Long totalDeAdultos,
+                                                   @PathVariable(value = "totalDeCriancas") Long totalDeCriancas) {
         Hotel[] hotels = this.integration.callHotelsByCode(id);
-        return ResponseEntity.ok(hotels);//TODO Melhorar isto, pois o valor retornado é sempre 1(um) portanto não há necessidade de retornar uma lista sempre.
+        Hotel hotel = this.service.executar(hotels, dateCheckin, dateCheckout, totalDeAdultos, totalDeCriancas);
+        return ResponseEntity.ok(hotel);
     }
 
 }
