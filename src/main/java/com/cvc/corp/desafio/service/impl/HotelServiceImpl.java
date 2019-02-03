@@ -6,17 +6,23 @@ import com.cvc.corp.desafio.resource.util.LocalDateUtil;
 import com.cvc.corp.desafio.service.HotelService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class HotelServiceImpl implements HotelService {
 
     @Override
-    public void executar(Hotel[] hotels, String dateCheckin, String dateCheckout, Long totalDeAdultos, Long totalDeCriancas) {
+    public Hotel executar(Hotel[] hotels, String dateCheckin, String dateCheckout, Long totalDeAdultos, Long totalDeCriancas) {
+        Hotel hotel = hotels[0];
         Long quantidadeDeDias = LocalDateUtil.getTotalDoPeridoDeDias(dateCheckin, dateCheckout);
-        for(Hotel hotel : hotels) {
-            for(Room room : hotel.getRooms()) {
-                room.setTotalPrice(room.calcularComissao(quantidadeDeDias, totalDeAdultos, totalDeCriancas));
+        BigDecimal valorAcumulado = BigDecimal.ZERO;
+        for(Hotel hotelOther : hotels) {
+            for(Room room : hotelOther.getRooms()) {
+                valorAcumulado = valorAcumulado.add(room.calcularComissao(quantidadeDeDias, totalDeAdultos, totalDeCriancas));
+                hotel.getRooms().get(0).setTotalPrice(valorAcumulado);
             }
         }
+        return hotel;
     }
 
 

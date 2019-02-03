@@ -26,14 +26,14 @@ public class HotelResource {
 
     @GetMapping(value = "/city/{cityCode}/checkin/{dateCheckin}/checkout/{dateCheckout}/adultos/{totalDeAdultos}/criancas/{totalDeCriancas}",
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Hotel[]> getHotelsByCodeCity(@PathVariable(value = "cityCode") Long cityCode,
+    public ResponseEntity<Hotel> getHotelsByCodeCity(@PathVariable(value = "cityCode") Long cityCode,
                                                        @PathVariable(value = "dateCheckin") String dateCheckin,
                                                        @PathVariable(value = "dateCheckout") String dateCheckout,
                                                        @PathVariable(value = "totalDeAdultos") Long totalDeAdultos,
                                                        @PathVariable(value = "totalDeCriancas") Long totalDeCriancas) {
         Hotel[] hotels = this.integration.callHotelsByCodeCity(cityCode);
-        this.service.executar(hotels, dateCheckin, dateCheckout, totalDeAdultos, totalDeCriancas);
-        return ResponseEntity.ok(hotels);
+        Hotel hotel = this.service.executar(hotels, dateCheckin, dateCheckout, totalDeAdultos, totalDeCriancas);
+        return ResponseEntity.ok(hotel);
     }
 
     @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
