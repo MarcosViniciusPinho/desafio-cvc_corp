@@ -5,6 +5,8 @@ package com.cvc.corp.desafio.resource.util;
  */
 public final class CallUtil {
 
+    private CallUtil() {}
+
     public static String executeHotelsAvail(String enviroment) {
         return build(enviroment, "hotels/avail/{cityCode}");
     }

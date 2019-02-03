@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class LocalDateUtil {
 
+    private LocalDateUtil() {}
+
     public static Long getTotalDoPeridoDeDias(String dataIn, String dataOut) {
         return Duration.between(transformToLocalDateTimePatterAmericano(dataIn),
                 transformToLocalDateTimePatterAmericano(dataOut)).toDays();
