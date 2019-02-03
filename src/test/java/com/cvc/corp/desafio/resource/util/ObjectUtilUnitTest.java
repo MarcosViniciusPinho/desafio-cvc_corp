@@ -4,7 +4,7 @@ import com.cvc.corp.desafio.entity.Hotel;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ObjectUtilTest {
+public class ObjectUtilUnitTest {
 
     @Test
     public void deveRetornarVerdadeiroPoisOParametroInformadoFoiValido() {

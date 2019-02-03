@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HotelServiceImplTest {
+public class HotelServiceImplUnitTest {
 
     @InjectMocks
     private HotelServiceImpl service;

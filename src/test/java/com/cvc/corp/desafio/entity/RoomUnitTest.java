@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-public class RoomTest {
+public class RoomUnitTest {
 
     @Test
     public void deveCalcularAComissao() {

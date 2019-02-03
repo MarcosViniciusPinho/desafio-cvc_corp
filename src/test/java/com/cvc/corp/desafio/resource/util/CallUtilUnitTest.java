@@ -3,7 +3,7 @@ package com.cvc.corp.desafio.resource.util;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CallUtilTest {
+public class CallUtilUnitTest {
 
     @Test
     public void deveRetornarAUriCorrespondenteAoServicoDeListarHoteisPorCodigoDaCidade() {

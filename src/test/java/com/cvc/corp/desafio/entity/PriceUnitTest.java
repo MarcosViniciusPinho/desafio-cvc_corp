@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-public class PriceTest {
+public class PriceUnitTest {
 
     @Test
     public void deveCalcularOPrecoPelaQuantidadeDeDiasPorAdulto() {

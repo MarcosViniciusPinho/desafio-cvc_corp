@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.time.format.DateTimeParseException;
 
-public class LocalDateUtilTest {
+public class LocalDateUtilUnitTest {
 
     @Test
     public void deveCalcularOPeriodoDeDias() {
