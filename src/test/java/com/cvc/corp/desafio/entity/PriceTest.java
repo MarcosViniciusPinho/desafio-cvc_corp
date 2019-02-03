@@ -23,4 +23,18 @@ public class PriceTest {
         Assert.assertEquals(BigDecimal.valueOf(250L), total);
     }
 
+    @Test
+    public void naoDeveCalcularOPrecoPelaQuantidadeDeDiasPorAdulto() {
+        Price price = new Price();
+        BigDecimal total = price.calcularValorAdulto(5L, 1L);
+        Assert.assertNull(total);
+    }
+
+    @Test
+    public void naoDeveCalcularOPrecoPelaQuantidadeDeDiasPorCrianca() {
+        Price price = new Price();
+        BigDecimal total = price.calcularValorCrianca(5L, 1L);
+        Assert.assertNull(total);
+    }
+
 }

@@ -12,3 +12,7 @@ Tecnologias utilizadas no Projeto:
 - TDD
 - RestTemplate
 - Lombok
+
+Criação de job para a entrega contínua:
+- Travis(https://travis-ci.org/MarcosViniciusPinho/desafio-cvc_corp)
+- Sonar(https://sonarcloud.io/dashboard?id=com.cvc.corp%3Adesafio)
