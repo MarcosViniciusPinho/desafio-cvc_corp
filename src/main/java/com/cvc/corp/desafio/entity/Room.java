@@ -28,11 +28,10 @@ public class Room {
             return null;
         }
 
-        BigDecimal valorPorAdulto = this.price.calcularValorCrianca(quantidadeDeDias, totalDeCriancas);
-        BigDecimal valorPorCrianca = this.price.calcularValorAdulto(quantidadeDeDias, totalDeAdultos);
+        BigDecimal valorPorAdulto = this.price.calcularValorAdulto(quantidadeDeDias, totalDeAdultos);
+        BigDecimal valorPorCrianca = this.price.calcularValorCrianca(quantidadeDeDias, totalDeCriancas);
 
         this.priceDetail = new PriceDetail(valorPorAdulto, valorPorCrianca);
-        this.price = null;
 
         BigDecimal valorComissaoAdulto = this.priceDetail.getPricePerDayAdult().divide(
                 BigDecimal.valueOf(0.7), BigDecimal.ROUND_FLOOR);
