@@ -9,9 +9,12 @@ Para poder rodar o projeto localmente basta executar o comando no terminal: mvn 
 
 Tecnologias utilizadas no Projeto:
 - Spring Boot
-- TDD
 - RestTemplate
 - Lombok
+
+Teste de Software utilizados:
+- TDD
+- Integration
 
 Criação de job para a entrega contínua:
 - Travis(https://travis-ci.org/MarcosViniciusPinho/desafio-cvc_corp)

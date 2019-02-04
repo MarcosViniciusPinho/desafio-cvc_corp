@@ -39,8 +39,18 @@ public class HotelResourceIntTest extends IntegrationSource {
         Hotel hotel = objectMapper.readValue(response.getContentAsString(), Hotel.class);
 
         Assert.assertEquals(BigDecimal.valueOf(65372175.61), hotel.getRooms().get(0).getTotalPrice());
-        Assert.assertEquals(BigDecimal.valueOf(13725.40).setScale(2), hotel.getRooms().get(0).getPriceDetail().getPricePerDayAdult());
-        Assert.assertEquals(BigDecimal.valueOf(4243.05), hotel.getRooms().get(0).getPriceDetail().getPricePerDayChild());
+    }
+
+    @Test
+    public void deveBuscarOHotelComSeuRespectivoCodigoFornecidoECalcularSeuValorDeComissao() throws Exception {
+        MockHttpServletResponse response = this.mockMvc.perform(get("/hotels/1/checkin/2018-05-20/checkout/2018-05-25/adultos/2/criancas/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+
+        Hotel hotel = objectMapper.readValue(response.getContentAsString(), Hotel.class);
+
+        Assert.assertEquals(BigDecimal.valueOf(25669.21), hotel.getRooms().get(0).getTotalPrice());
     }
 
 }
