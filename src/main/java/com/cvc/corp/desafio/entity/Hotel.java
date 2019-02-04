@@ -20,4 +20,8 @@ public class Hotel {
     private String cityName;
     private List<Room> rooms;
 
+    public void removePriceBody() {
+        this.getRooms().get(0).setPrice(null);
+    }
+
 }

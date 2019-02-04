@@ -33,6 +33,7 @@ public class HotelResource {
                                                        @PathVariable(value = "totalDeCriancas") Long totalDeCriancas) {
         Hotel[] hotels = this.integration.callHotelsByCodeCity(cityCode);
         Hotel hotel = this.service.executar(hotels, dateCheckin, dateCheckout, totalDeAdultos, totalDeCriancas);
+        hotel.removePriceBody();
         return ResponseEntity.ok(hotel);
     }
 
@@ -45,6 +46,7 @@ public class HotelResource {
                                                    @PathVariable(value = "totalDeCriancas") Long totalDeCriancas) {
         Hotel[] hotels = this.integration.callHotelsByCode(id);
         Hotel hotel = this.service.executar(hotels, dateCheckin, dateCheckout, totalDeAdultos, totalDeCriancas);
+        hotel.removePriceBody();
         return ResponseEntity.ok(hotel);
     }
 
