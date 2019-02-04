@@ -35,7 +35,8 @@ public class IntegrationComponent {
     public Hotel[] callHotels(Long code, String uri) {
         Hotel[] hotels = this.restTemplate.getForObject(uri, Hotel[].class, code);
         if(ObjetcUtil.isNull(hotels)) {
-            throw new RecurseNotFoundException("O usuário não foi encontrado", "O recurso não foi encontrado!");
+            throw new RecurseNotFoundException("Não foi encontrado hoteis com os dados informados",
+                    "A API de hoteis não retornou nenhuma informação!");
         }
         return hotels;
     }
